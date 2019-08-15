@@ -21,7 +21,7 @@ namespace CompositionBankAccount.EntitiesTest
             decimal debt = customer.GetDebts();
 
             //assert
-            Assert.True(debt < 0 && debt > -999_999_999);
+            Assert.True(debt <= 0 && debt > -999_999_999);
         }
 
         [Fact]

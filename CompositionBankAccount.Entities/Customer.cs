@@ -34,7 +34,30 @@ namespace CompositionBankAccount.Entities
         public int Rating {
             get
             {
-                return 0;
+                if (GetDebts() < -2_500_000 && GetAssets() > 1_250_000)
+                {
+                    return 1;
+                }
+                else if (GetDebts() < -2_500_000 && (GetAssets() >= 50_000 && GetAssets() <= 1_250_000))
+                {
+                    return 2;
+                }
+                else if ((GetDebts() <= -250_000 && GetDebts() >= -2_500_000) && (GetAssets() >= 50_000 && GetAssets() <= 1_250_000))
+                {
+                    return 3;
+                }
+                else if ((GetDebts() < 0 && GetDebts() > -250_000) && (GetAssets() > 0 && GetAssets() <= 50_000) && (GetDebts() * -1) < GetAssets())
+                {
+                    return 4;
+                }
+                else if (((GetDebts() < 0 && GetDebts() > -250_000) && (GetAssets() > 0 && GetAssets() <= 50_000)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
             }
         }
 
@@ -64,26 +87,39 @@ namespace CompositionBankAccount.Entities
             decimal debt = 0;
             foreach (var account in accounts)
             {
-                debt += account.Balance;
+                if (account.Balance < 0)
+                {
+                    debt += account.Balance;
+                }
             }
-
-            if (debt >= 0)
-            {
-                return 0;
-            }
-
 
             return debt;
         }
 
         public decimal GetAssets()
         {
-            throw new NotImplementedException();
+            decimal asserts = 0;
+            foreach (var account in accounts)
+            {
+                if (account.Balance >= 0)
+                {
+                    asserts += account.Balance;
+                }
+                
+            }
+                       
+            return asserts;
         }
 
         public decimal GetTotalBalance()
         {
-            throw new NotImplementedException();
+            decimal total = 0;
+            foreach (var account in accounts)
+            {
+                total += account.Balance;
+            }
+
+            return total;
         }
         #endregion
     }
