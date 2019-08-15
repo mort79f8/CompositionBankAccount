@@ -30,7 +30,9 @@ namespace CompositionBankAccount.EntitiesTest
             //Arrange
             Customer customer = new Customer();
             Account account = new Account(100_000);
-            customer.Accounts.Add(account);
+            List<Account> accounts = new List<Account>();
+            accounts.Add(account);
+            customer.Accounts = accounts;
 
             //Act
             decimal asserts = customer.GetAssets();
@@ -46,8 +48,12 @@ namespace CompositionBankAccount.EntitiesTest
             Customer customer = new Customer();
             Account account1 = new Account(20_000);
             Account account2 = new Account(-1_000);
-            customer.Accounts.Add(account1);
-            customer.Accounts.Add(account2);
+            List<Account> accounts = new List<Account>
+            {
+                account1,
+                account2
+            };
+            customer.Accounts = accounts;
 
             //Act
             decimal debt = customer.GetDebts();
@@ -59,14 +65,18 @@ namespace CompositionBankAccount.EntitiesTest
         }
 
         [Fact]
-        public void RatingOne_TruIfDebtAndAssertIsWithLimits()
+        public void RatingOne_TrueIfDebtAndAssertIsWithLimits()
         {
             //Arrange
             Customer customer = new Customer();
             Account account1 = new Account(1_300_000);
             Account account2 = new Account(-2_500_999);
-            customer.Accounts.Add(account1);
-            customer.Accounts.Add(account2);
+            List<Account> accounts = new List<Account>
+            {
+                account1,
+                account2
+            };
+            customer.Accounts = accounts;
 
             //Act
             int rating = customer.Rating;
@@ -76,14 +86,18 @@ namespace CompositionBankAccount.EntitiesTest
         }
 
         [Fact]
-        public void RatingTwo_TruIfDebtAndAssertIsWithLimits()
+        public void RatingTwo_TrueIfDebtAndAssertIsWithLimits()
         {
             //Arrange
             Customer customer = new Customer();
             Account account1 = new Account(1_100_000);
             Account account2 = new Account(-2_500_999);
-            customer.Accounts.Add(account1);
-            customer.Accounts.Add(account2);
+            List<Account> accounts = new List<Account>
+            {
+                account1,
+                account2
+            };
+            customer.Accounts = accounts;
 
             //Act
             int rating = customer.Rating;
@@ -93,14 +107,18 @@ namespace CompositionBankAccount.EntitiesTest
         }
 
         [Fact]
-        public void RatingThree_TruIfDebtAndAssertIsWithLimits()
+        public void RatingThree_TrueIfDebtAndAssertIsWithLimits()
         {
             //Arrange
             Customer customer = new Customer();
             Account account1 = new Account(300_000);
             Account account2 = new Account(-2_400_000);
-            customer.Accounts.Add(account1);
-            customer.Accounts.Add(account2);
+            List<Account> accounts = new List<Account>
+            {
+                account1,
+                account2
+            };
+            customer.Accounts = accounts;
 
             //Act
             int rating = customer.Rating;
@@ -110,14 +128,18 @@ namespace CompositionBankAccount.EntitiesTest
         }
 
         [Fact]
-        public void RatingFour_TruIfDebtAndAssertIsWithLimits()
+        public void RatingFour_TrueIfDebtAndAssertIsWithLimits()
         {
             //Arrange
             Customer customer = new Customer();
             Account account1 = new Account(40_000);
             Account account2 = new Account(-30_000);
-            customer.Accounts.Add(account1);
-            customer.Accounts.Add(account2);
+            List<Account> accounts = new List<Account>
+            {
+                account1,
+                account2
+            };
+            customer.Accounts = accounts;
 
             //Act
             int rating = customer.Rating;
@@ -127,14 +149,18 @@ namespace CompositionBankAccount.EntitiesTest
         }
 
         [Fact]
-        public void RatingFive_TruIfDebtAndAssertIsWithLimits()
+        public void RatingFive_TrueIfDebtAndAssertIsWithLimits()
         {
             //Arrange
             Customer customer = new Customer();
             Account account1 = new Account(48_000);
             Account account2 = new Account(-150_000);
-            customer.Accounts.Add(account1);
-            customer.Accounts.Add(account2);
+            List<Account> accounts = new List<Account>
+            {
+                account1,
+                account2
+            };
+            customer.Accounts = accounts;
 
             //Act
             int rating = customer.Rating;
