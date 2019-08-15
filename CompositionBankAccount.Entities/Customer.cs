@@ -77,7 +77,7 @@ namespace CompositionBankAccount.Entities
 
         public Customer()
         {
-
+            Accounts = new List<Account>();
         }
         #endregion
 
