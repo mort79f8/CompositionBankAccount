@@ -1,34 +1,79 @@
-﻿using EncapsulationBankAccount.Entities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace CompositionBankAccount.Entities
 {
-    class Customer
+    public class Customer
     {
         #region Fields
         private int id;
         private List<Account> accounts;
         #endregion
 
-        public int Id { get; set; }
-        public List<Account> Accounts { get; set; }
-        public int Rating { get; }
+        #region Property
+        public int Id { get => id; set => id = value; }
+        public List<Account> Accounts
+        {
+            get
+            {
+                return accounts;
+            }
+            set
+            {
+                if (value is null)
+                {
+                    accounts = new List<Account>();
+                }
+                else
+                {
+                    accounts = value;
+                }
+            }
+        }
+        public int Rating {
+            get
+            {
+                return 0;
+            }
+        }
 
+        #endregion
+
+        #region Constuctors
         public Customer(int id, List<Account> accounts)
         {
-            throw new NotImplementedException();
+            Id = id;
+            Accounts = accounts;
         }
 
         public Customer(List<Account> accounts)
         {
-            throw new NotImplementedException();
+            Accounts = accounts;
         }
 
+        public Customer()
+        {
+
+        }
+        #endregion
+
+        #region Methodes
         public decimal GetDebts()
         {
-            throw new NotImplementedException();
+            decimal debt = 0;
+            foreach (var account in accounts)
+            {
+                debt += account.Balance;
+            }
+
+            if (debt >= 0)
+            {
+                return 0;
+            }
+
+
+            return debt;
         }
 
         public decimal GetAssets()
@@ -40,6 +85,6 @@ namespace CompositionBankAccount.Entities
         {
             throw new NotImplementedException();
         }
-
+        #endregion
     }
 }

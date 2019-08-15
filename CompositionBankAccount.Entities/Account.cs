@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace EncapsulationBankAccount.Entities
+namespace CompositionBankAccount.Entities
 {
     public class Account
     {

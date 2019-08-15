@@ -1,8 +1,8 @@
-using EncapsulationBankAccount.Entities;
 using System;
 using Xunit;
+using CompositionBankAccount.Entities;
 
-namespace EncapsulationBankAccount.EntitiesTest
+namespace CompositionBankAccount.EntitiesTest
 {
     public class AccountTest
     {
